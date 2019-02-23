@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Request Form</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+<script src="scripts/adminController.js"></script>
+</head>
+
+<body  ng-app='onlinevoucher' ng-controller="theController">
+<section class="bg-gra-02 p-t-130 p-b-100">
+<div class="container">
+  <div class="page-wrapper font-poppins">
+    <div class="wrapper">
+      <div class="card card-4">
+        <div class="card-body">
+          <h2 class="title"><b>Online Discount Voucher / Promo <br>Code Form Request</b></h2>
+          <div class="p-t-15">
+                <button class="btn btn--radius-2 btn--blue" type="submit" ng-click="getForms()" >Load All Data</button>
+            </div>
+          <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>S/No</th>
+        <th>Customer Name</th>
+        <th>Requester</th>
+        <th>Request Form</th>
+        <th>Approval Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        </tr><tr ng-repeat="x in records  track by $index">
+        <td>{{ $index}}</td> 
+        <td>{{ x.customer.firstName }}</td>
+        <td>{{ x.requester.firstName }}</td>
+        <td class="text-center"><button class="btn btn--green" data-toggle="modal" data-target="#myModal" ng-click="setForm(x)">Details</button></td>
+        <td>{{ x.aprovalStatus }}</td>
+        </tr>
+    </tbody>
+  </table>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+</section>
+
+<section class="modal zoomInUp" id="myModal" role="dialog">
+  <div class="container">
+        <div class="page-wrapper p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title"><b>Request Form Details</b></h2>
+
+            <form class="form-inline" action="/action_page.php">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">Customer Name:</label>
+                        <input type="text" class="form-controls input-line" name="customer" ng-model="recordsNextPage.customer.firstName">
+                        </div> 
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">Passenger Type:</label>
+                        <input type="text" class="form-controls input-line" name="passenger" ng-model="recordsNextPage.passengerType">
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                
+                <h3>Purchase:</h3>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">From:</label>
+                        <input type="text" class="form-controls input-line" name="from"  ng-model="recordsNextPage.puchaseForm">
+                        </div> 
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">To:</label>
+                        <input type="text" class="form-controls input-line" name="to" ng-model="recordsNextPage.purchaseTo">
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                <h3>Outbound Travel:</h3>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">From:</label>
+                        <input type="text" class="form-controls input-line" name="from" ng-model="recordsNextPage.outboundTravelFrom">
+                        </div> 
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">To:</label>
+                        <input type="text" class="form-controls input-line" name="to" ng-model="recordsNextPage.outboundTravelTo">
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                <h3>Inbound Travel:</h3>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">From:</label>
+                        <input type="text" class="form-controls input-line" name="from" ng-model="recordsNextPage.inbountTravelForm">
+                        </div> 
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">To:</label>
+                        <input type="text" class="form-controls input-line" name="to" ng-model="recordsNextPage.inboundTravelTo">
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                <h3>Airport:</h3>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">From:</label>
+                        <input type="text" class="form-controls input-line" name="from" ng-model="recordsNextPage.airportFrom">
+                        </div> 
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">To:</label>
+                        <input type="text" class="form-controls input-line" name="to" ng-model="recordsNextPage.airportTo">
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">Discount:</label>
+                        <input type="text" class="form-controls input-line" name="from" ng-model="recordsNextPage.inbountTravelForm">
+                        </div> 
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">Quantity:</label>
+                        <input type="text" class="form-controls input-line" name="to" ng-model="recordsNextPage.quantity">
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">Voucher Type:</label>
+                        <input type="text" class="form-controls input-line" name="from"  ng-model="recordsNextPage.voucherTyper">
+                        </div> 
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                        <label class="form-labels">Fare Family:</label>
+                        <input type="text" class="form-controls input-line" name="to"  ng-model="recordsNextPage.restrictionByFareFamily">
+                        </div> 
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    
+                    
+                    <div class="col-2">
+                    <label class="form-labels">Aproval Status:</label>
+                        <input type="text" class="form-controls input-line" name="to"   ng-model="recordsNextPage.aprovalStatus">
+                        </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                    <div class="below-buttons"><button type="button" class="btn btn--blue" ng-click="setProvalStatus(recordsNextPage.id,'APROVED')">APPROVE</button></div>
+                    </div>
+                    <div class="col-2">
+                    <div class="below-button"><button type="button" class="btn btn--blue" ng-click="setProvalStatus(recordsNextPage.id,'REJECT')">REJECT</button></div> 
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                        <div class="input-group">
+                                <input class="input--style-4" type="text" name="sender"  ng-model="message">
+                                </div>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>      
+            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+</section>
+
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body>
+
+</html>
+
+</body>
+</html>

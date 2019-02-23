@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Request Form</title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+  <script src="scripts/requestController.js"></script>
+</head>
+
+<body style="background-color: #009bff;" ng-app='onlinevoucher' ng-controller="theController">
+    <section>
+        <div class="container">
+        <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title"><b>Online Discount Voucher / Promo <br>Code Form Request</b></h2>
+                    <form id="myForm" class="contact__form" method="post">
+                                
+                                <!-- form message -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                            Your message was sent successfully.
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">Requester</label>
+                            <input class="input--style-4" type="text" name="requester" ng-model="requestertName">
+                            </div>
+                            </div>
+
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">Email</label>
+                            <input class="input--style-4" type="text" name="email" ng-model="emailAddress">
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">Customer</label>
+                            <input class="input--style-4" type="text" name="customer" ng-model="customerfirstName">
+                            </div>
+                            </div>
+
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">For events, dates, location</label>
+                            <input class="input--style-4" type="text" name="events" ng-model="eventDateLocation">
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">Voucher type<small> (choose only one)</small></label>
+                            <div class="p-t-10">
+                            <label class="radio-container">Multiple (same code for all)
+                            <input type="radio" name="voucher" ng-model="voucherTyper">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Single (unique, one-time codes)
+                            <input type="radio" name="voucher" ng-model="voucherTyper">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Continual (automatic discount)
+                            <input type="radio" name="voucher" ng-model="voucherTyper">
+                            <span class="checkmark"></span>
+                            </label>
+                            </div>
+                            </div>
+                            </div>
+                        
+                            <div class="col-2">
+                                <label>Quantity</label>
+                                <div class="wrap-input1 validate-input">
+                                <input type="number" name="quantity" class="input--style-4" required="true" ng-model="quantity">
+                                <span class="shadow-input1"></span>
+                                </div><br>
+                                <div class="input-group">
+                                <label class="label">Discount</label>
+                                <div class="p-t-10">
+                                <label class="radio-container m-r-45">Economy
+                                <input type="radio" checked="checked" name="discount" ng-model="discountEconoy">
+                                <span class="checkmark"></span>
+                                </label>
+                                <label class="radio-container">Business
+                                <input type="radio" name="discount" ng-model="discountBusiness">
+                                <span class="checkmark"></span>
+                                </label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-headings">
+                                <h3>Restrictions</h3>
+                                </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">Purchase From</label>
+                            <div class="input-group-icon">
+                            <input class="input--style-4 js-datepicker" type="date" name="birthday" ng-model="puchaseForm">
+                            <i class="zmdi zmdi-calendar-note input-icon"></i>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">To</label>
+                            <div class="input-group-icon">
+                            <input class="input--style-4 js-datepicker" type="date" name="birthday" ng-model="purchaseTo">
+                            <i class="zmdi zmdi-calendar-note input-icon  "></i>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">Outbound travel from</label>
+                            <div class="input-group-icon">
+                            <input class="input--style-4 js-datepicker" type="date" name="birthday" ng-model="outboundTravelFrom">
+                            <i class="zmdi zmdi-calendar-note input-icon  "></i>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">To</label>
+                            <div class="input-group-icon">
+                            <input class="input--style-4 js-datepicker" type="date" name="birthday" ng-model="outboundTravelTo">
+                            <i class="zmdi zmdi-calendar-note input-icon  "></i>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">Inbound travel from</label>
+                            <div class="input-group-icon">
+                            <input class="input--style-4 js-datepicker" type="date" name="birthday" ng-model="inbountTravelForm">
+                            <i class="zmdi zmdi-calendar-note input-icon  "></i>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label class="label">To</label>
+                            <div class="input-group-icon">
+                            <input class="input--style-4 js-datepicker" type="date" name="birthday" ng-model="inboundTravelTo">
+                            <i class="zmdi zmdi-calendar-note input-icon  "></i>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                        <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Airports from</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                            <select name="subject" >
+                            <option disabled="disabled" selected="selected" ng-model="airportFrom" >Choose option</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Great Britain</option>
+                                <option>Japan</option>
+                                <option>Singapore</option>
+                                <option selected>Malaga - Spain</option>
+                                <option>Pakistan</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Airports To</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                            <select name="subject" >
+                            <option disabled="disabled" selected="selected" ng-model="airportTo">Choose option</option>
+                                <option selected>Addis Ababa - Ethiopia</option>
+                                <option>Australia</option>
+                                <option>Canada</option>
+                                <option>China</option>
+                                <option>Great Britain</option>
+                                <option>Japan</option>
+                                <option>Singapore</option>
+                                <option>Pakistan</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+
+                        <div class="input-group">
+                        <label class="label">Excluding flight ranges</label>
+                        <input class="input--style-4" type="text" name="flight-ranges">
+                        </div>
+
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label><h4 class="labels">Restrictions by fare family</h4></label>
+                            <div class="p-t-10">
+                            <label class="radio-container">Economy Hot Deal
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Economy Lite
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Economy Classic
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Economy Flex
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Business Lite
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Business Classic
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Business Flex
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">First Classic
+                            <input type="radio" name="fare-family" ng-model="restrictionByFareFamily">
+                            <span class="checkmark"></span>
+                            </label>
+                            </div>
+                            </div>
+                            </div>
+
+                            <div class="col-2">
+                            <div class="input-group">
+                            <label><h4 class="labels">Special Requests</h4></label>
+                            <div class="p-t-10">
+                            <label class="radio-container" ng-model="passengerType">Adult
+                            <input type="radio" name="special-request">
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Child
+                            <input type="radio" name="special-request" ng-model="passengerType">>
+                            <span class="checkmark"></span>
+                            </label><br>
+                            <label class="radio-container">Infant
+                            <input type="radio" name="special-request" ng-model="passengerType">>
+                            <span class="checkmark"></span>
+                            </label>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="form-headings">
+                        <h3>Justification</h3>
+                        </div>
+
+                        <div class="input-group">
+                        <label class="label">Justification</label>
+                        <textarea class="input--style-4 textarea-msg" type="text" name="justification" ng-model="justification"></textarea>></textarea>
+                        </div>
+
+                        <div class="form-headings">
+                        <h3>Send To</h3>
+                        </div>
+
+                        <div class="input-group">
+                        <input class="input--style-4" type="text" name="sender" placeholder="Email" ng-model="sendTo">
+                        </div>
+
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit" ng-click="submitForm()" >Submit</button>
+                        
+                            <button class="btn btn--radius-2 btn--blue" type="submit" ng-click="backToMainPage()" >CANCEL</button>
+
+                        </div>
+
+
+                    </form>
+                    <div class="input-group">
+                            <input class="input--style-4" type="text" name="sender"  ng-model="message">
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
